@@ -1,4 +1,5 @@
 let request = new XMLHttpRequest();
+
 request.open("GET", "https://tedee.com/wp-json/wp/v2/posts?per_page=4");
 request.onload = function () {
   if (request.status >= 200 && request.status < 400) {
@@ -12,10 +13,13 @@ request.onerror = function () {
   console.log("Connection error.");
 };
 request.send();
+
 function loadData(wpData) {
   let html = "";
+
   for (i = 0; i < wpData.length; i++) {
     let postDate = new Date(wpData[i].date);
+
     html +=
       "<div class='post'>" +
       "<div class='post__element post__element--title'>" +
